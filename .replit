@@ -1,2 +1,2 @@
 language = "rust"
-run = "cargo run --bin main5"
+run = "cargo run --bin shaderc"
