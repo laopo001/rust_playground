@@ -19,6 +19,13 @@ version = "0.2.70"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 
 [[package]]
+name = "rust_playground"
+version = "0.1.0"
+dependencies = [
+ "shaderc 0.6.2 (registry+https://github.com/rust-lang/crates.io-index)",
+]
+
+[[package]]
 name = "shaderc"
 version = "0.6.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -34,13 +41,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 dependencies = [
  "cmake 0.1.42 (registry+https://github.com/rust-lang/crates.io-index)",
  "libc 0.2.70 (registry+https://github.com/rust-lang/crates.io-index)",
-]
-
-[[package]]
-name = "test2"
-version = "0.1.0"
-dependencies = [
- "shaderc 0.6.2 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
 [metadata]
