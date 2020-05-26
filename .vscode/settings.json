@@ -1,0 +1,12 @@
+{
+    "files.associations": {
+        "*.wxss": "css",
+        "*.frag": "glsl",
+        "*.cjson": "jsonc",
+        "*.wxs": "javascript",
+        "*.cookies": "json",
+        "iostream": "cpp",
+        "typeinfo": "cpp",
+        "ostream": "cpp"
+    }
+}

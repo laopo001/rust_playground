@@ -1,3 +1,4 @@
+#![allow(unused)]
 use std::cell::RefCell;
 
 fn main() {
@@ -7,7 +8,6 @@ fn main() {
         let mut y = x.borrow_mut();
         *y = 10;
         assert_eq!(10, *x.borrow());
-        let z = x.borrow();     //编译时会通过，但运行时panic!
+        let z = x.borrow(); //编译时会通过，但运行时panic!
     }
 }
-
