@@ -37,5 +37,6 @@ int main()
     // cout << endl;
     A a = test2();
     cout << &a.name << endl;
+    cout << (0.1 + 0.2) << endl;
     return 0;
 }
