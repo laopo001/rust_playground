@@ -6,6 +6,7 @@ fn main() {
             v.len() * std::mem::size_of::<u16>(),
         )
         .to_vec();
+
         dbg!(&s);
         let s2 = &std::slice::from_raw_parts(
             s.as_ptr() as *const u16,
