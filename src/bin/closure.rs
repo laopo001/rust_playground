@@ -10,17 +10,17 @@ impl<F: FnMut()> FnBox for F {
     }
 }
 
-pub type Task<'a> = Box<dyn FnBox>;
+pub type Task<'a> = Box<dyn FnBox + 'a>;
 
-struct B<'a, T = Task<'a>> {
-    cb: Option<T>,
-    _m: &'a PhantomData<T>,
+struct B<'a> {
+    cb: Option<Task<'a>>,
+    // _m: &'a PhantomData<Task<'a>>,
 }
 impl<'a> B<'a> {
     fn new() -> Self {
         return B {
             cb: None,
-            _m: &PhantomData,
+            // _m: &PhantomData,
         };
     }
     fn sync(&mut self) {
@@ -28,16 +28,25 @@ impl<'a> B<'a> {
             (cb).call_box();
         });
     }
-    fn set_cb(&mut self, cb: Task) {
+    fn set_cb(&mut self, cb: Task<'a>) {
         self.cb = Some(cb);
     }
 }
 
+struct A {
+    i: i32,
+}
 fn main() {
-    let mut b = B::new();
-    let mut a = 1;
-    b.set_cb(Box::new(|| {
-        a += 1;
-    }));
-    b.sync();
+    unsafe {
+        let mut a = A { i: 1 };
+        let ptr_a = &mut a as *mut A;
+        let mut b = B::new();
+        b.set_cb(Box::new(|| {
+            a.i += 1;
+            dbg!(a.i);
+        }));
+        b.sync();
+        b.sync();
+        dbg!((*ptr_a).i);
+    }
 }
